@@ -8,15 +8,15 @@ pipeline {
     environment {
         DOCKER_USER = "surya8442"
         IMAGE_NAME = "autoassist"
-        IMAGE_TAG = "latest"
-        CONTAINER_NAME = "autoassist_cont"
+        IMAGE_TAG = "V2"
+        CONTAINER_NAME = "autoassist_cont2"
     }
 
     stages {
 
         stage('Checkout Code') {
             steps {
-                git branch: 'master', url: 'https://github.com/Surya8442/project-nodejs-webapp.git'
+                git branch: 'master', url: 'https://github.com/Surya8442/autoassist.git'
             }
         }
 
@@ -39,7 +39,7 @@ pipeline {
         stage('Run New Container') {
             steps {
                 sh '''
-                docker run -d -p 1338:1337 --name ${CONTAINER_NAME} ${IMAGE_NAME}:${IMAGE_TAG}
+                docker run -d -p 1338:1377 --name ${CONTAINER_NAME} ${IMAGE_NAME}:${IMAGE_TAG}
                 '''
             }
         }
